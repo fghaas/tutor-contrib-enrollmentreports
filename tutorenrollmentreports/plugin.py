@@ -12,13 +12,13 @@ templates = pkg_resources.resource_filename(
 
 config = {
     "add": {
-        "MAIL_FROM": "enrollmentreports@{{ SMTP_HOST }}",
         "MAIL_TO": "enrollmentreports@{{ SMTP_HOST }}",
     },
     "defaults": {
         "VERSION": __version__,
         "DOCKER_IMAGE": "{{ DOCKER_REGISTRY }}enrollmentreports:{{ ENROLLMENTREPORTS_VERSION }}",  # noqa: E501
         "DB_NAME": "{{ OPENEDX_MYSQL_DATABASE }}",
+        "MAIL_FROM": "{{ SMTP_USERNAME }}",
     },
 }
 
