@@ -1,3 +1,3 @@
 enrollment_report_database: {{ ENROLLMENTREPORTS_DB_NAME }}
 enrollment_report_mail_from: {{ ENROLLMENTREPORTS_MAIL_FROM }}
-enrollment_report_mail_to: [{{ ENROLLMENTREPORTS_MAIL_TO }}]
+enrollment_report_mail_to: {{ ENROLLMENTREPORTS_MAIL_TO }}
