@@ -33,7 +33,7 @@ hooks = {
 }
 
 
-@local_command_group.command(help="Run the enrollment reports scrio")
+@local_command_group.command(help="Run the enrollment reports script")
 @click.pass_obj
 def enrollmentreports(context):
     config = tutor_config.load(context.root)
