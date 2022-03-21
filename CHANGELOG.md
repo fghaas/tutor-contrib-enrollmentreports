@@ -2,6 +2,6 @@
 
 **Experimental. Do not use in production.**
 
-* Created plugin with
-  [Cookiecutter](https://cookiecutter.readthedocs.io/) 
-  from gh:fghaas/cookiecutter-tutor-plugin.
+* Add `enrollmentreports` command to `tutor local` to run the enrollment reports ansible playbook.
+* Add enrollmentreports-job service
+

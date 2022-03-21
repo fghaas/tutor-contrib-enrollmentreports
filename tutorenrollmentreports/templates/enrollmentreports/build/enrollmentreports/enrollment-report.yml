@@ -1,0 +1,8 @@
+# Emails enrollment reports.
+---
+- hosts: localhost
+  become: no
+  vars:
+    enrollment_report_mail_enable: True
+  roles:
+    - enrollment_report

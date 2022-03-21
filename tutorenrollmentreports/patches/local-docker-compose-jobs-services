@@ -1,0 +1,6 @@
+############# Enrollment reports service
+enrollmentreports-job:
+  image: {{ ENROLLMENTREPORTS_DOCKER_IMAGE }}
+  volumes:
+    - ../plugins/enrollmentreports/build/enrollmentreports/mysql_config/config.yml:/etc/my.cnf
+

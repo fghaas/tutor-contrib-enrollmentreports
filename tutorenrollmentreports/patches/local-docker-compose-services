@@ -1,0 +1,3 @@
+############# Enrollment Reports service
+enrollmentreports:
+  image: {{ ENROLLMENTREPORTS_DOCKER_IMAGE }}
