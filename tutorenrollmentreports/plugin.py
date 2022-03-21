@@ -40,7 +40,7 @@ def enrollmentreports(context):
     job_runner = context.job_runner(config)
     job_runner.run_job(
         service="enrollmentreports",
-        command="bash -e run_enrollment_reports.sh"
+        command="ansible-playbook enrollment-report.yml"
 
     )
 
