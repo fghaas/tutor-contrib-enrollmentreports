@@ -4,7 +4,6 @@ import os
 import pkg_resources
 import click
 from tutor import config as tutor_config
-from tutor.utils import docker_run
 from tutor.commands.local import local as local_command_group
 
 templates = pkg_resources.resource_filename(
@@ -41,7 +40,7 @@ def enrollmentreports(context):
     job_runner = context.job_runner(config)
     job_runner.run_job(
         service="enrollmentreports",
-        command=f"bash -e run_enrollment_reports.sh"
+        command="bash -e run_enrollment_reports.sh"
 
     )
 
@@ -56,5 +55,4 @@ def patches():
             name = os.path.basename(path)
             content = patch_file.read()
             all_patches[name] = content
-    return all_patches  
-
+    return all_patches
