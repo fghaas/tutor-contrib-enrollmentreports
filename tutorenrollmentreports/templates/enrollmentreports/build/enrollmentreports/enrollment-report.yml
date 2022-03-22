@@ -3,6 +3,6 @@
 - hosts: localhost
   become: no
   vars:
-    enrollment_report_mail_enable: True
+    enrollment_report_mail_enable: true
   roles:
-    - enrollment_report
+    - enrollmentreports

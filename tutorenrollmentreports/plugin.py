@@ -4,7 +4,6 @@ import os
 import pkg_resources
 import click
 from tutor import config as tutor_config
-from tutor.utils import docker_run
 from tutor.commands.local import local as local_command_group
 
 templates = pkg_resources.resource_filename(
@@ -13,13 +12,15 @@ templates = pkg_resources.resource_filename(
 
 config = {
     "add": {
-        "MAIL_FROM": "enrollmentreports@{{ SMTP_HOST }}",
-        "MAIL_TO": "enrollmentreports@{{ SMTP_HOST }}",
+        "MAIL_TO": [
+            "enrollmentreports@{{ SMTP_HOST }}",
+        ],
     },
     "defaults": {
         "VERSION": __version__,
         "DOCKER_IMAGE": "{{ DOCKER_REGISTRY }}enrollmentreports:{{ ENROLLMENTREPORTS_VERSION }}",  # noqa: E501
         "DB_NAME": "{{ OPENEDX_MYSQL_DATABASE }}",
+        "MAIL_FROM": "{{ SMTP_USERNAME }}",
     },
 }
 
@@ -34,14 +35,14 @@ hooks = {
 }
 
 
-@local_command_group.command(help="Run the enrollment reports scrio")
+@local_command_group.command(help="Run the enrollment reports script")
 @click.pass_obj
 def enrollmentreports(context):
     config = tutor_config.load(context.root)
     job_runner = context.job_runner(config)
     job_runner.run_job(
         service="enrollmentreports",
-        command=f"bash -e run_enrollment_reports.sh"
+        command="ansible-playbook enrollment-report.yml"
 
     )
 
@@ -56,5 +57,4 @@ def patches():
             name = os.path.basename(path)
             content = patch_file.read()
             all_patches[name] = content
-    return all_patches  
-
+    return all_patches
