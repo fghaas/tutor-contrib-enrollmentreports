@@ -2,5 +2,6 @@
 enrollmentreports-job:
   image: {{ ENROLLMENTREPORTS_DOCKER_IMAGE }}
   volumes:
-    - ../plugins/enrollmentreports/build/enrollmentreports/mysql_config/config.yml:/etc/my.cnf
+    - ../plugins/enrollmentreports/build/enrollmentreports/mysql_config/my.cnf:/etc/my.cnf
+    - ../plugins/enrollmentreports/build/enrollmentreports/inventory/config.yml:/etc/ansible/group_vars/all
 
