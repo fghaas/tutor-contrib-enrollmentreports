@@ -7,6 +7,7 @@ enrollment_report_mail_host: "{{ SMTP_HOST }}"
 enrollment_report_mail_port: "{{ SMTP_PORT }}"
 {% if SMTP_USERNAME is defined %}enrollment_report_mail_username: "{{ SMTP_USERNAME }}"
 enrollment_report_mail_password: "{{ SMTP_PASSWORD }}"{% endif %}
+{% if SMTP_USE_SSL %}enrollment_report_mail_secure: always{% endif %}
 {% if SMTP_USE_TLS %}enrollment_report_mail_secure: starttls{% endif %}
 {% else %}
 enrollment_report_mail_enable: false
