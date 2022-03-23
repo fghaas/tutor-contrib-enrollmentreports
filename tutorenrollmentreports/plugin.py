@@ -12,7 +12,7 @@ templates = pkg_resources.resource_filename(
 
 config = {
     "add": {
-        "MAIL_TO": "[enrollmentreports@{{ SMTP_HOST }},]",
+        "MAIL_TO": [],
     },
     "defaults": {
         "VERSION": __version__,
