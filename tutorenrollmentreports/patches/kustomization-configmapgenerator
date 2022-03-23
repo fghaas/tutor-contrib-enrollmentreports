@@ -1,0 +1,6 @@
+- name: enrollmentreports-mysql-configmap
+  files:
+    - plugins/enrollmentreports/build/enrollmentreports/mysql_config/my.cnf
+- name: enrollmentreports-ansible-inventory-configmap
+  files:
+    - plugins/enrollmentreports/build/enrollmentreports/inventory/config.yml

@@ -1,0 +1,32 @@
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: enrollmentreports-job
+  labels:
+    app.kubernetes.io/component: cronjob
+spec:
+  schedule: '{{ ENROLLMENTREPORTS_K8S_CRONJOB_SCHEDULE }}'
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: enrollmentreports
+              image: {{ ENROLLMENTREPORTS_DOCKER_IMAGE }}
+              command:
+                - 'ansible-playbook'
+                - 'enrollment-report.yml'
+              volumeMounts:
+                - name: enrollmentreports-mysql-config
+                  mountPath: '/etc/my.cnf'
+                - name: enrollmentreports-inventory-config
+                  mountPath: '/etc/ansible/group_vars/all'
+          volumes:
+            - name: enrollmentreports-mysql-config
+              configMap:
+                name: enrollmentreports-mysql-configmap
+            - name: enrollmentreports-inventory-config
+              configMap:
+                name: enrollmentreports-ansible-inventory-configmap
+          restartPolicy: OnFailure
