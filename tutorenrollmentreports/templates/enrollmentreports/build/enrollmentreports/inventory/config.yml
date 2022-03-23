@@ -1,4 +1,6 @@
 enrollment_report_database: {{ ENROLLMENTREPORTS_DB_NAME }}
+{% if RUN_SMTP or SMTP_HOST %}
+enrollment_report_mail_enable: true
 enrollment_report_mail_from: {{ ENROLLMENTREPORTS_MAIL_FROM }}
 enrollment_report_mail_to: {{ ENROLLMENTREPORTS_MAIL_TO }}
 enrollment_report_mail_host: "{{ SMTP_HOST }}"
@@ -6,3 +8,6 @@ enrollment_report_mail_port: "{{ SMTP_PORT }}"
 {% if SMTP_USERNAME is defined %}enrollment_report_mail_username: "{{ SMTP_USERNAME }}"
 enrollment_report_mail_password: "{{ SMTP_PASSWORD }}"{% endif %}
 {% if SMTP_USE_TLS %}enrollment_report_mail_secure: starttls{% endif %}
+{% else %}
+enrollment_report_mail_enable: false
+{% endif %}
