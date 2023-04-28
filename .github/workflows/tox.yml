@@ -33,5 +33,6 @@ jobs:
         pip install tox tox-gh-actions
     - env:
         DOCKER_REGISTRY: "ghcr.io/${{ github.repository }}/"
+        SETUPTOOLS_SCM_PRETEND_VERSION: "0.0.0dev"
       name: Test with tox
       run: tox
